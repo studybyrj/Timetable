@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Timetable</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="login">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div id="timetable" class="hidden">
+        <h1>Student Timetable</h1>
+        <div class="day">
+            <h2 onclick="toggleSchedule('mondayToSaturday')">Monday to Saturday</h2>
+            <div id="mondayToSaturday" class="schedule hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Task</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>5:30 am - 6:00 am</td><td>Wake up and freshen up</td></tr>
+                        <tr><td>6:00 am - 6:30 am</td><td>Light exercise and breakfast</td></tr>
+                        <tr><td>6:30 am - 6:45 am</td><td>Travel to coaching</td></tr>
+                        <tr><td>7:00 am - 11:30 am</td><td>Coaching classes</td></tr>
+                        <tr><td>11:30 am - 12:00 pm</td><td>Travel back home</td></tr>
+                        <tr><td>12:00 pm - 12:30 pm</td><td>Lunch and relaxation</td></tr>
+                        <tr><td>12:30 pm - 2:30 pm</td><td>Self-study session</td></tr>
+                        <tr><td>2:30 pm - 3:00 pm</td><td>Short break</td></tr>
+                        <tr><td>3:00 pm - 5:00 pm</td><td>Mathematics</td></tr>
+                        <tr><td>5:00 pm - 5:30 pm</td><td>Snack break</td></tr>
+                        <tr><td>5:30 pm - 7:30 pm</td><td>Physics</td></tr>
+                        <tr><td>7:30 pm - 8:00 pm</td><td>Dinner</td></tr>
+                        <tr><td>8:00 pm - 9:30 pm</td><td>Chemistry</td></tr>
+                        <tr><td>9:30 pm - 10:00 pm</td><td>Review and plan for the next day</td></tr>
+                        <tr><td>10:00 pm - 10:30 pm</td><td>Light reading or relaxation</td></tr>
+                        <tr><td>10:30 pm</td><td>Sleep</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="day">
+            <h2 onclick="toggleSchedule('wednesday')">Wednesday</h2>
+            <div id="wednesday" class="schedule hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Task</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>7:00 am - 7:30 am</td><td>Wake up and freshen up</td></tr>
+                        <tr><td>7:30 am - 8:00 am</td><td>Light exercise</td></tr>
+                        <tr><td>8:00 am - 9:00 am</td><td>Breakfast and leisure time</td></tr>
+                        <tr><td>9:00 am - 11:00 am</td><td>Mathematics</td></tr>
+                        <tr><td>11:00 am - 11:30 am</td><td>Short break</td></tr>
+                        <tr><td>11:30 am - 1:30 pm</td><td>Physics</td></tr>
+                        <tr><td>1:30 pm - 2:00 pm</td><td>Lunch and relaxation</td></tr>
+                        <tr><td>2:00 pm - 4:00 pm</td><td>Chemistry</td></tr>
+                        <tr><td>4:00 pm - 4:30 pm</td><td>Break / Power nap</td></tr>
+                        <tr><td>4:30 pm - 6:30 pm</td><td>Revision of previous week's topics</td></tr>
+                        <tr><td>6:30 pm - 7:00 pm</td><td>Snack break</td></tr>
+                        <tr><td>7:00 pm - 8:00 pm</td><td>Doubt clearing session / Practice problems</td></tr>
+                        <tr><td>8:00 pm - 8:30 pm</td><td>Dinner</td></tr>
+                        <tr><td>8:30 pm - 10:00 pm</td><td>Light study / Revision</td></tr>
+                        <tr><td>10:00 pm - 10:30 pm</td><td>Relaxation</td></tr>
+                        <tr><td>10:30 pm</td><td>Sleep</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="day">
+            <h2 onclick="toggleSchedule('testDay')">Sunday (Test Day)</h2>
+            <div id="testDay" class="schedule hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Task</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>6:30 am - 7:00 am</td><td>Wake up and freshen up</td></tr>
+                        <tr><td>7:00 am - 7:30 am</td><td>Light exercise and breakfast</td></tr>
+                        <tr><td>7:30 am - 8:00 am</td><td>Travel to coaching</td></tr>
+                        <tr><td>8:00 am - 11:00 am</td><td>Test at coaching center</td></tr>
+                        <tr><td>11:00 am - 12:30 pm</td><td>Break / Relaxation</td></tr>
+                        <tr><td>12:30 pm - 1:00 pm</td><td>Travel back home</td></tr>
+                        <tr><td>1:00 pm - 1:30 pm</td><td>Lunch</td></tr>
+                        <tr><td>1:30 pm - 3:30 pm</td><td>Rest or light activity</td></tr>
+                        <tr><td>3:30 pm - 5:30 pm</td><td>Review test performance</td></tr>
+                        <tr><td>5:30 pm - 6:00 pm</td><td>Snack break</td></tr>
+                        <tr><td>6:00 pm - 8:00 pm</td><td>Revision of key topics</td></tr>
+                        <tr><td>8:00 pm - 8:30 pm</td><td>Dinner</td></tr>
+                        <tr><td>8:30 pm - 10:00 pm</td><td>Light study / Relaxation</td></tr>
+                        <tr><td>10:00 pm - 10:30 pm</td><td>Prepare for the week ahead</td></tr>
+                        <tr><td>10:30 pm</td><td>Sleep</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="day">
+            <h2 onclick="toggleSchedule('noTestDay')">Sunday (No Test Day)</h2>
+            <div id="noTestDay" class="schedule hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Task</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>7:00 am - 7:30 am</td><td>Wake up and freshen up</td></tr>
+                        <tr><td>7:30 am - 8:00 am</td><td>Light exercise and breakfast</td></tr>
+                        <tr><td>8:00 am - 10:00 am</td><td>Mathematics</td></tr>
+                        <tr><td>10:00 am - 10:30 am</td><td>Short break</td></tr>
+                        <tr><td>10:30 am - 12:30 pm</td><td>Physics</td></tr>
+                        <tr><td>12:30 pm - 1:00 pm</td><td>Lunch and relaxation</td></tr>
+                        <tr><td>1:00 pm - 3:00 pm</td><td>Chemistry</td></tr>
+                        <tr><td>3:00 pm - 3:30 pm</td><td>Break / Power nap</td></tr>
+                        <tr><td>3:30 pm - 5:30 pm</td><td>Revision of weekly topics</td></tr>
+                        <tr><td>5:30 pm - 6:00 pm</td><td>Snack break</td></tr>
+                        <tr><td>6:00 pm - 8:00 pm</td><td>Doubt clearing session / Practice problems</td></tr>
+                        <tr><td>8:00 pm - 8:30 pm</td><td>Dinner</td></tr>
+                        <tr><td>8:30 pm - 10:00 pm</td><td>Light study / Relaxation</td></tr>
+                        <tr><td>10:00 pm - 10:30 pm</td><td>Prepare for the week ahead</td></tr>
+                        <tr><td>10:30 pm</td><td>Sleep</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="timer">
+            <h1>Study Timer</h1>
+            <div id="countdown">00:00:00</div>
+            <button id="startTimer">Start</button>
+            <button id="stopTimer">Stop</button>
+            <button id="resetTimer">Reset</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('background.jpg');
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #333;
+}
+
+.hidden {
+    display: none;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #ff6f61;
+}
+
+h2 {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #fff4e6;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+h2:hover {
+    background-color: #ffe0cc;
+}
+
+#login, #timetable, #timer {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+    margin: 20px;
+}
+
+#login h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff6f61;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff5733;
+}
+
+#timetable table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#timetable th, #timetable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#timetable th {
+    background-color: #ff6f61;
+    color: white;
+}
+
+.day {
+    margin-bottom: 20px;
+}
+
+#countdown {
+    font-size: 2.5em;
+    margin: 20px 0;
+    color: #ff6f61;
+}
+
+#timer button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    background-color: #6b5b95;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#timer button:hover {
+    background-color: #4b2c6f;
+}
+
+@media (max-width: 600px) {
+    #timetable {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    #countdown {
+        font-size: 2em;
+    }
+
+    #timer button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+</style>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    if (username === 'admin' && password === 'jain') {
+        document.getElementById('login').classList.add('hidden');
+        document.getElementById('timetable').classList.remove('hidden');
+    } else {
+        alert('Incorrect username or password');
+    }
+});
+
+function toggleSchedule(dayId) {
+    const schedule = document.getElementById(dayId);
+    if (schedule.classList.contains('hidden')) {
+        schedule.classList.remove('hidden');
+    } else {
+        schedule.classList.add('hidden');
+    }
+}
+
+let timer;
+let time = 0;
+
+function updateTimer() {
+    const hours = Math.floor(time / 3600).toString().padStart(2, '0');
+    const minutes = Math.floor((time % 3600) / 60).toString().padStart(2, '0');
+    const seconds = (time % 60).toString().padStart(2, '0');
+    document.getElementById('countdown').innerText = `${hours}:${minutes}:${seconds}`;
+}
+
+document.getElementById('startTimer').addEventListener('click', function() {
+    if (!timer) {
+        timer = setInterval(function() {
+            time++;
+            updateTimer();
+        }, 1000);
+    }
+});
+
+document.getElementById('stopTimer').addEventListener('click', function() {
+    clearInterval(timer);
+    timer = null;
+});
+
+document.getElementById('resetTimer').addEventListener('click', function() {
+    clearInterval(timer);
+    timer = null;
+    time = 0;
+    updateTimer();
+});
+</script>
